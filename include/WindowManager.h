@@ -8,6 +8,7 @@
 #pragma once
 
 #include <cstdint>
+#include <iostream>
 #include <SDL2/SDL.h>
 
 #include "Builder.h"
@@ -43,25 +44,32 @@ public:
      *
      */
     void render ();
+
+public:
+
+    //SETTERS
+
+    WindowManager setAxisX();
+
 private:
 
     // Window entity
-    SDL_Window *window;
+    SDL_Window *m_pWindow;
 
     // Simple renderer
-    SDL_Renderer *renderer;
+    SDL_Renderer *m_pRenderer;
 private:
     // Window's x axis
-    int32_t x;
+    int32_t m_x;
 
     // Window's y axis
-    int32_t y;
+    int32_t m_y;
 
     // Window's height
-    int32_t height;
+    int32_t m_height;
 
     // Window's width
-    int32_t width;
+    int32_t m_width;
 
 };
 
