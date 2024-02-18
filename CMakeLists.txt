@@ -4,11 +4,14 @@ project(HelloCMake)
 
 add_compile_options(-lSDL2)
 
-include_directories(include)
+include_directories(
+  include
+  Builders/include
+  )
 
 add_executable(SDaLi
 ## HEADERS
-  include/header1.h
+  include/Builders/IBuilder.h
   include/header2.h
 
 ## SOURCES

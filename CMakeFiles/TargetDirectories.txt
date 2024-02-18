@@ -1,3 +1,0 @@
-/home/dali/Code/Projets/cpp/SDL/SDaLi/CMakeFiles/hello.dir
-/home/dali/Code/Projets/cpp/SDL/SDaLi/CMakeFiles/edit_cache.dir
-/home/dali/Code/Projets/cpp/SDL/SDaLi/CMakeFiles/rebuild_cache.dir
