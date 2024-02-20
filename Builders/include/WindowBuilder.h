@@ -5,16 +5,34 @@
  * Copyright (c) 2024
  */
 
-#include "IBuilder.h"
+#include "WindowManager.h"
+
+#include <memory>
 
 namespace SDaLi
 {
 
-class WindowBuilder : IBuilder
+class WindowBuilder
 {
 public:
-    WindowBuilder reset ();
 
+    /**
+     * @brief First function to be called before every build.
+     *
+     * @return WindowBuilder returns himself so the user can call every build function after this one.
+     */
+    WindowBuilder *reset ();
+
+    /**
+     * @brief Last function to be called in every build.
+     *
+     * @return WindowManager It returns the built object.
+     */
+    std::unique_ptr<WindowManager> build ();
+
+private:
+    bool m_resetState;
+    std::unique_ptr<WindowManager> m_pWindowManager;
 };
 
 

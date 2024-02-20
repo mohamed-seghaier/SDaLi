@@ -9,6 +9,7 @@
 
 #include <cstdint>
 #include <iostream>
+#include <memory>
 #include <SDL2/SDL.h>
 
 namespace SDaLi
@@ -55,18 +56,20 @@ private:
 
     // Simple renderer
     SDL_Renderer *m_pRenderer;
-private:
-    // Window's x axis
-    int32_t m_x;
 
-    // Window's y axis
-    int32_t m_y;
+private:
 
     // Window's height
     int32_t m_height;
 
     // Window's width
     int32_t m_width;
+
+    // Window's x axis
+    int32_t m_x;
+
+    // Window's y axis
+    int32_t m_y;
 
 };
 

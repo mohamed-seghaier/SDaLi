@@ -7,7 +7,13 @@
 
 #include "WindowManager.h"
 
-SDaLi::WindowManager::WindowManager()
+SDaLi::WindowManager::WindowManager() :
+    m_pRenderer(nullptr),
+    m_pWindow(nullptr),
+    m_height(0),
+    m_width(0),
+    m_x(0),
+    m_y(0)
 {
 }
 
