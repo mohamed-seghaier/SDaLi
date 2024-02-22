@@ -7,7 +7,7 @@
 
 #include "WindowBuilder.h"
 
-namespace SDaLi::Window
+namespace SDaLi::Builder
 {
 
 WindowBuilder::WindowBuilder():
@@ -50,7 +50,7 @@ WindowBuilder *WindowBuilder::buildAxisY(const int32_t inValue)
     return this;
 }
 
-std::unique_ptr <WindowManager> WindowBuilder::build()
+std::unique_ptr <::SDaLi::Window::WindowManager> WindowBuilder::build()
 {
     if (m_resetState == true)
     {

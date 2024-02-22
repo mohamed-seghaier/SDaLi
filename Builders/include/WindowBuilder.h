@@ -8,13 +8,14 @@
 #pragma once
 
 #include "WindowManager.h"
+#include "IBuilder.h"
 
 #include <memory>
 
-namespace SDaLi::Window
+namespace SDaLi::Builder
 {
 
-class WindowBuilder
+class WindowBuilder : public IBuilder
 {
 public:
 
@@ -25,7 +26,7 @@ public:
      *
      * @return WindowBuilder returns himself so the user can call every build function after this one.
      */
-    WindowBuilder *reset ();
+    virtual WindowBuilder *reset () override ;
 
     WindowBuilder *buildHeight(const int32_t);
     WindowBuilder *buildWidth(const int32_t);
@@ -37,9 +38,9 @@ public:
      *
      * @return WindowManager It returns the built object.
      */
-    std::unique_ptr <WindowManager> build ();
+    std::unique_ptr <::SDaLi::Window::WindowManager> build ();
 
-    std::unique_ptr<WindowManager> m_pWindowManager;
+    std::unique_ptr<::SDaLi::Window::WindowManager> m_pWindowManager;
 private:
     bool m_resetState;
 };

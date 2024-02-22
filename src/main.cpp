@@ -10,7 +10,7 @@
 
 int main()
 {
-    SDaLi::Window::WindowBuilder builder;
+    SDaLi::Builder::WindowBuilder builder;
     auto window = builder.reset()
                   ->buildAxisX (SDL_WINDOWPOS_CENTERED)
                   ->buildAxisY (SDL_WINDOWPOS_CENTERED)

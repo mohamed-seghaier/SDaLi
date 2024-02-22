@@ -13,17 +13,36 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/Window/include
 )
 
-# cpp files
-set(SOURCE_FILES
-  src/main.cpp
-  Builders/src/WindowBuilder.cpp
-  Window/src/WindowManager.cpp
+#main
+set(MAIN_SOURCE_FILE
+src/main.cpp
 )
 
-# Headers files
-set(HEADER_FILES
+#################
+# Headers files #
+#################
+
+set(BUILDER_HEADER_FILES
+Builders/include/IBuilder.h
   Builders/include/WindowBuilder.h
+)
+
+set(WINDOW_HEADER_FILES
   Window/include/WindowManager.h
+)
+
+
+#################
+# Sources files #
+#################
+
+set(BUILDER_SOURCE_FILES
+Builders/src/IBuilder.cpp
+Builders/src/WindowBuilder.cpp
+)
+
+set(WINDOW_SOURCE_FILES
+Window/src/WindowManager.cpp
 )
 
 # Link libraries
@@ -34,7 +53,31 @@ link_libraries(${SDL2_LIBRARIES})
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 # Create exe
-add_executable(SDaLi ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(SDaLi 
+
+
+
+##########
+## MAIN ##
+##########
+
+${MAIN_SOURCE_FILE}
+
+
+
+#############
+## BUILDER ##
+#############
+
+${BUILDER_SOURCE_FILES} ${BUILDER_HEADER_FILES}
+
+############
+## WINDOW ##
+############
+
+${WINDOW_SOURCE_FILES} ${WINDOW_HEADER_FILES}
+
+)
 
 
 
