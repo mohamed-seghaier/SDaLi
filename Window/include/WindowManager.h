@@ -12,7 +12,7 @@
 #include <memory>
 #include <SDL2/SDL.h>
 
-namespace SDaLi
+namespace SDaLi::Window
 {
 #define SCREEN_HEIGHT 1080
 #define SCREEN_WIDTH 1920
@@ -25,11 +25,6 @@ public:
      *
      */
     WindowManager ();
-
-    // Disable copy and assignment
-    WindowManager (WindowManager&) = delete;
-    WindowManager (WindowManager&&) = delete;
-    // Disable copy and assignment
 
     /**
      * @brief Fill the SDL_Window member
@@ -47,9 +42,27 @@ public:
 
     //SETTERS
 
-    WindowManager setAxisX();
+    /**
+     * @brief Set Height Value.
+     *
+     */
+    void setHeight(const int32_t);
+
+    /**
+     * @brief Set Width Value.
+     *
+     */
+    void setWidth(const int32_t);
+    void setAxisX(const int32_t);
+    void setAxisY(const int32_t);
 
 private:
+
+    /**
+     * @brief Set default Values for height and width at 1920 | 1080
+     *
+     */
+    void fillDefaultValue ();
 
     // Window entity
     SDL_Window *m_pWindow;

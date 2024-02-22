@@ -10,6 +10,14 @@
 
 int main()
 {
-
+    SDaLi::Window::WindowBuilder builder;
+    auto window = builder.reset()
+                  ->buildAxisX (SDL_WINDOWPOS_CENTERED)
+                  ->buildAxisY (SDL_WINDOWPOS_CENTERED)
+                  ->buildHeight (0)
+                  ->buildWidth (0)
+                  ->build();
+    window->createWindow();
+    window->render();
     return 0;
 }

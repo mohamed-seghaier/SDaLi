@@ -7,9 +7,11 @@
 
 #include "WindowManager.h"
 
-SDaLi::WindowManager::WindowManager() :
-    m_pRenderer(nullptr),
-    m_pWindow(nullptr),
+namespace SDaLi::Window
+{
+WindowManager::WindowManager() :
+    m_pRenderer(NULL),
+    m_pWindow(NULL),
     m_height(0),
     m_width(0),
     m_x(0),
@@ -17,11 +19,43 @@ SDaLi::WindowManager::WindowManager() :
 {
 }
 
-
-
-
-void SDaLi::WindowManager::createWindow()
+void WindowManager::setAxisX (const int32_t inValue)
 {
+    m_x = inValue;
+}
+
+void WindowManager::setAxisY (const int32_t inValue)
+{
+    m_y = inValue;
+}
+
+void WindowManager::setHeight (const int32_t inValue)
+{
+    m_height = inValue;
+}
+
+void WindowManager::setWidth (const int32_t inValue)
+{
+    m_width = inValue;
+}
+
+void WindowManager::fillDefaultValue()
+{
+    if (m_height == 0)
+    {
+        m_height = SCREEN_HEIGHT;
+    }
+    if (m_width == 0)
+    {
+        m_width = SCREEN_WIDTH;
+    }
+}
+
+
+
+void WindowManager::createWindow()
+{
+    fillDefaultValue ();
     m_pWindow = SDL_CreateWindow("Dalics",
                                  m_x,
                                  m_y,
@@ -38,7 +72,7 @@ void SDaLi::WindowManager::createWindow()
     SDL_Delay (3000);
 }
 
-void SDaLi::WindowManager::render()
+void WindowManager::render()
 {
     m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, SDL_RENDERER_ACCELERATED);
 
@@ -49,4 +83,6 @@ void SDaLi::WindowManager::render()
         EXIT_FAILURE;
     }
     std::cout << "Render created.\n";
+}
+
 }
