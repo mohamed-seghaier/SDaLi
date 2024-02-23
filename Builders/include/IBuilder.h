@@ -7,12 +7,17 @@
 
 #pragma once
 
+#include <memory>
+
 namespace SDaLi::Builder
 {
+template <typename T>
 class IBuilder
 {
 public:
     virtual IBuilder *reset () = 0 ;
+
+    virtual std::unique_ptr<T> build() = 0;
 
 };
 }

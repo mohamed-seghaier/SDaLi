@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 project(SDALi)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_CXX_CPPCHECK "cppcheck")
+
 
 # SDL
 find_package(SDL2 REQUIRED)
@@ -10,6 +13,7 @@ include_directories(${SDL2_INCLUDE_DIRS})
 # add headers repertories
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/Builders/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/Builders/Window/include
   ${CMAKE_CURRENT_SOURCE_DIR}/Window/include
 )
 
@@ -24,7 +28,8 @@ src/main.cpp
 
 set(BUILDER_HEADER_FILES
 Builders/include/IBuilder.h
-  Builders/include/WindowBuilder.h
+  Builders/Window/include/WindowBuilder.h
+  Builders/Window/include/WindowTestBuilder.h
 )
 
 set(WINDOW_HEADER_FILES
@@ -37,8 +42,8 @@ set(WINDOW_HEADER_FILES
 #################
 
 set(BUILDER_SOURCE_FILES
-Builders/src/IBuilder.cpp
-Builders/src/WindowBuilder.cpp
+Builders/Window/src/WindowBuilder.cpp
+Builders/Window/src/WindowTestBuilder.cpp
 )
 
 set(WINDOW_SOURCE_FILES

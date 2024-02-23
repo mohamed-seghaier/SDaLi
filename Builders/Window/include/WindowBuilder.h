@@ -15,7 +15,7 @@
 namespace SDaLi::Builder
 {
 
-class WindowBuilder : public IBuilder
+class WindowBuilder : public IBuilder <SDaLi::Window::WindowManager>
 {
 public:
 
@@ -38,7 +38,7 @@ public:
      *
      * @return WindowManager It returns the built object.
      */
-    std::unique_ptr <::SDaLi::Window::WindowManager> build ();
+    virtual std::unique_ptr <::SDaLi::Window::WindowManager> build () override;
 
     std::unique_ptr<::SDaLi::Window::WindowManager> m_pWindowManager;
 private:
