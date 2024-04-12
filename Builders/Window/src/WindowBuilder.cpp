@@ -26,6 +26,20 @@ WindowBuilder *WindowBuilder::reset()
     return this;
 }
 
+WindowBuilder *WindowBuilder::buildRenderer()
+{
+    m_pWindowManager->render();
+
+    return this;
+}
+
+WindowBuilder *WindowBuilder::buildWindowName(const std::string &inValue)
+{
+    std::cout << "Test ::: " << inValue << "\n";
+    m_pWindowManager->setWindowName (inValue);
+    return this;
+}
+
 WindowBuilder *WindowBuilder::buildHeight(const int32_t inValue)
 {
     m_pWindowManager->setHeight(inValue);
@@ -50,6 +64,12 @@ WindowBuilder *WindowBuilder::buildAxisY(const int32_t inValue)
     return this;
 }
 
+WindowBuilder *WindowBuilder::buildWindow()
+{
+    m_pWindowManager->createWindow();
+    return this;
+}
+
 std::unique_ptr <::SDaLi::Window::WindowManager> WindowBuilder::build()
 {
     if (m_resetState == true)
@@ -58,7 +78,7 @@ std::unique_ptr <::SDaLi::Window::WindowManager> WindowBuilder::build()
     }
     else
     {
-        std::cout << "WindowBuilder::WindowBuilder = Cannot build WindowManager.\n";
+        std::cout << "WindowBuilder::build = Cannot build WindowManager.\n";
     }
     return nullptr;
 }

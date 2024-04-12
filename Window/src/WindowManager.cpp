@@ -19,9 +19,26 @@ WindowManager::WindowManager() :
 {
 }
 
+SDL_Renderer *WindowManager::getSdlRenderer ()
+{
+    return m_pRenderer;
+}
+
+/**
+void WindowManager::setRenderer (SDL_Window *inpWindow)
+{
+    SDL_Renderer *pRenderer = SDL_CreateRenderer(inpWindow,-1,SDL_RENDERER_ACCELERATED);
+
+}
+**/
 void WindowManager::setAxisX (const int32_t inValue)
 {
     m_x = inValue;
+}
+
+void WindowManager::setWindowName (const std::string &inValue)
+{
+    m_windowName = inValue;
 }
 
 void WindowManager::setAxisY (const int32_t inValue)
@@ -49,6 +66,10 @@ void WindowManager::fillDefaultValue()
     {
         m_width = SCREEN_WIDTH;
     }
+    if (m_windowName.empty ())
+    {
+        m_windowName = "SDaLi";
+    }
 }
 
 
@@ -56,7 +77,7 @@ void WindowManager::fillDefaultValue()
 void WindowManager::createWindow()
 {
     fillDefaultValue ();
-    m_pWindow = SDL_CreateWindow("Dalics",
+    m_pWindow = SDL_CreateWindow(m_windowName.c_str (),
                                  m_x,
                                  m_y,
                                  m_width,
@@ -65,6 +86,7 @@ void WindowManager::createWindow()
                                 );
     if (m_pWindow == nullptr)
     {
+        std::cout << "Error on WindowManager::CreateWindow : " << SDL_GetError() << "\n";
         SDL_Quit();
         EXIT_FAILURE;
     }
@@ -78,11 +100,12 @@ void WindowManager::render()
 
     if (m_pRenderer == nullptr)
     {
-        std::cout << "Error WindowManager::Render () : Failed to create render. Abort.\n";
+        std::cout << "Error WindowManager::Render () : " << SDL_GetError() << "/n";
         SDL_Quit();
         EXIT_FAILURE;
     }
     std::cout << "Render created.\n";
+    SDL_SetRenderDrawColor(m_pRenderer, 1, 0, 0, SDL_ALPHA_OPAQUE);
 }
 
 }

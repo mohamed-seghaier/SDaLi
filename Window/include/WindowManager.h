@@ -38,7 +38,14 @@ public:
      */
     void render ();
 
+    
+
+
 public:
+
+    // GETTERS
+
+    SDL_Renderer *getSdlRenderer ();
 
     //SETTERS
 
@@ -56,6 +63,8 @@ public:
     void setAxisX(const int32_t);
     void setAxisY(const int32_t);
 
+    void setWindowName (const std::string &inValue);
+
 private:
 
     /**
@@ -71,6 +80,8 @@ private:
     SDL_Renderer *m_pRenderer;
 
 private:
+
+    std::string m_windowName = "";
 
     // Window's height
     int32_t m_height;
